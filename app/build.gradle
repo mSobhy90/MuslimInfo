@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
+apply plugin: 'kotlin-android-extensions'
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -23,10 +25,51 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    testCompile 'junit:junit:4.12'
+
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    testCompile 'junit:junit:4.12'
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$KOTLIN_VERSION"
+
+    // AppCompat for backward compatibility
+    compile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:cardview-v7:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:recyclerview-v7:$SUPPORT_LIBRARY_VERSION"
+
+    // Retrofit for networking
+    compile "com.squareup.okhttp3:logging-interceptor:$OKHTTP_LOGGING_INTERCEPTOR_VERSION"
+    compile "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_VERSION"
+
+    // Butterknife for views injection and binding
+    compile "com.jakewharton:butterknife:$BUTTERKNIFE_VERSION"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTERKNIFE_VERSION"
+
+    // RxJava to act as contract between domain layer and view layer
+    compile "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION"
+    compile("io.reactivex.rxjava2:rxandroid:$RX_ANDROID_VERSION") {
+        exclude group: 'io.reactivex'
+    }
+
+    // Picasso for image loading (might be an overkill for a simple app like this)
+    compile "com.squareup.picasso:picasso:$PICASSO_VERSION"
+
+    // Dagger2 + Dagger.Android for dependency injection
+    provided "javax.annotation:jsr250-api:$JSR_VERSION"
+    compile "com.google.dagger:dagger:$DAGGER_VERSION"
+    compile "com.google.dagger:dagger-android:$DAGGER_VERSION"
+    compile "com.google.dagger:dagger-android-support:$DAGGER_VERSION"
+    annotationProcessor "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$DAGGER_VERSION"
+}
+
+repositories {
+    maven {
+        url 'https://maven.google.com'
+    }
 }

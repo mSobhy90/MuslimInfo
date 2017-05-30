@@ -1,16 +1,15 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "com.musliminfo.prayertimes"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -21,6 +20,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dexOptions {
+        javaMaxHeapSize "2048M"
+    }
+    compileOptions.incremental = false
 }
 
 dependencies {
@@ -48,7 +51,7 @@ dependencies {
 
     // Butterknife for views injection and binding
     compile "com.jakewharton:butterknife:$BUTTERKNIFE_VERSION"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTERKNIFE_VERSION"
+    kapt "com.jakewharton:butterknife-compiler:$BUTTERKNIFE_VERSION"
 
     // RxJava to act as contract between domain layer and view layer
     compile "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION"
@@ -61,11 +64,10 @@ dependencies {
 
     // Dagger2 + Dagger.Android for dependency injection
     provided "javax.annotation:jsr250-api:$JSR_VERSION"
+    kapt "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
     compile "com.google.dagger:dagger:$DAGGER_VERSION"
     compile "com.google.dagger:dagger-android:$DAGGER_VERSION"
     compile "com.google.dagger:dagger-android-support:$DAGGER_VERSION"
-    annotationProcessor "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
-    annotationProcessor "com.google.dagger:dagger-android-processor:$DAGGER_VERSION"
 }
 
 repositories {

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Prayer Times</string>
+    <string name="get_prayer_times">Get prayer times</string>
 </resources>

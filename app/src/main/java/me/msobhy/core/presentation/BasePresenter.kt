@@ -1,11 +1,10 @@
-package com.musliminfo.prayertimes.presentation.base
+package me.msobhy.core.presentation
 
 import android.os.Bundle
 import android.support.annotation.CallSuper
 
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-
 
 /**
  * @author mSobhy

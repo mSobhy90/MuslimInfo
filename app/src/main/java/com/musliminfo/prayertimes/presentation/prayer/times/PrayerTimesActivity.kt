@@ -2,11 +2,15 @@ package com.musliminfo.prayertimes.presentation.prayer.times
 
 import com.musliminfo.prayertimes.App
 import com.musliminfo.prayertimes.R
-import com.musliminfo.prayertimes.presentation.base.BaseActivity
+import me.msobhy.core.presentation.BaseActivity
 
 class PrayerTimesActivity : BaseActivity<PrayerTimesPresenter, PrayerTimesView>(), PrayerTimesView {
     override fun inject() {
         App.graph.inject(this)
+    }
+
+    override fun shouldShowUpButton(): Boolean {
+        return false
     }
 
     override fun layoutToInflate(): Int {

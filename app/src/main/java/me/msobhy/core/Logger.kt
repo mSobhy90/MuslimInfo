@@ -1,6 +1,7 @@
-package com.musliminfo.prayertimes
+package me.msobhy.core
 
 import android.util.Log
+import com.musliminfo.prayertimes.BuildConfig
 
 object Logger {
     private val LOG_TAG = "MUSLIM_INFO_PROVIDER - "

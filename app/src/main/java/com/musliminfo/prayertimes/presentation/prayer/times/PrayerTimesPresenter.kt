@@ -1,6 +1,6 @@
 package com.musliminfo.prayertimes.presentation.prayer.times
 
-import com.musliminfo.prayertimes.presentation.base.BasePresenter
+import me.msobhy.core.presentation.BasePresenter
 import javax.inject.Inject
 import javax.inject.Singleton
 

@@ -1,4 +1,4 @@
-package com.musliminfo.prayertimes.presentation.base
+package me.msobhy.core.presentation
 
 import android.os.Bundle
 import android.support.annotation.CallSuper
@@ -50,7 +50,7 @@ abstract class BaseActivity<PresenterType : BasePresenter<ViewType>, ViewType> :
         }
     }
 
-    protected fun shouldShowUpButton(): Boolean {
+    open fun shouldShowUpButton(): Boolean {
         return true
     }
 

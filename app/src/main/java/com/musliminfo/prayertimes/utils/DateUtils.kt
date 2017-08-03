@@ -1,6 +1,6 @@
 package com.musliminfo.prayertimes.utils
 
-import com.musliminfo.prayertimes.Logger
+import me.msobhy.core.Logger
 import java.text.DateFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
